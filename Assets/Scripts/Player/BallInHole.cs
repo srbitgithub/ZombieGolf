@@ -13,11 +13,6 @@ public class BallInHole : MonoBehaviour
     public AudioSource explosion03;
     public AudioSource ballInHole;
 
-    private void Start()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject player;
@@ -27,9 +22,6 @@ public class BallInHole : MonoBehaviour
         {
             ballInHole.Play();
 
-            //player.GetComponent<PlayerTrajectory>().enabled = false;
-            //player.GetChild(0).transform.GetComponent<PlayerTrajectory>().enabled = false;
-            //player.transform.GetChild(0).GetComponent<PlayerTrajectory>().enabled = false;
             Vector3 positionDressingBall = collision.transform.position;
             Quaternion rotationDressingBall = collision.transform.rotation;
             Instantiate(dressingBall, positionDressingBall, rotationDressingBall);
@@ -37,7 +29,6 @@ public class BallInHole : MonoBehaviour
             print(collision.gameObject.transform.parent.name);
 
             Destroy(player);
-            //player.transform.GetComponent<PlayerTrajectory>().enabled = false;
 
             fireworks01.gameObject.SetActive(true);
             explosion01.PlayDelayed(0.5f);
